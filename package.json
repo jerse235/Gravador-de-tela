@@ -1,0 +1,11 @@
+{
+  "name": "gravador-de-tela-chequetto",
+  "version": "1.0.0",
+  "description": "Gravador de tela local, leve e focado em desempenho.",
+  "main": "src/main.js",
+  "author": "Chequetto",
+  "license": "MIT",
+  "scripts": { "start": "electron .", "dev": "electron . --enable-logging", "build": "electron-builder --win --x64" },
+  "devDependencies": { "electron": "^36.3.1", "electron-builder": "^26.0.12" },
+  "build": { "appId": "br.chequetto.gravador", "productName": "Gravador de Tela Chequetto", "files": ["src/**/*", "package.json"], "win": { "target": "nsis", "artifactName": "Chequetto-${version}-Setup.${ext}" } }
+}

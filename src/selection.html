@@ -1,0 +1,7 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><link rel="stylesheet" href="selection.css"></head><body><div id="hint">Arraste para selecionar a área</div><div id="box"></div><script>
+const box = document.getElementById('box'); let start;
+document.addEventListener('mousedown', event => { start = { x: event.clientX, y: event.clientY }; box.style.cssText = `left:${start.x}px;top:${start.y}px;width:0;height:0`; });
+document.addEventListener('mousemove', event => { if (!start) return; const x = Math.min(start.x, event.clientX); const y = Math.min(start.y, event.clientY); box.style.cssText = `left:${x}px;top:${y}px;width:${Math.abs(event.clientX-start.x)}px;height:${Math.abs(event.clientY-start.y)}px`; });
+document.addEventListener('mouseup', event => { if (!start) return; window.selection.finish({ x: Math.min(start.x,event.clientX), y: Math.min(start.y,event.clientY), width: Math.abs(event.clientX-start.x), height: Math.abs(event.clientY-start.y) }); start = null; });
+document.addEventListener('keydown', event => { if (event.key === 'Escape') window.close(); });
+</script></body></html>
